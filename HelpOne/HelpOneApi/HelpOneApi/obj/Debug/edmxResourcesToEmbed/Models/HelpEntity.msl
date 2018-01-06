@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="helponeModelStoreContainer" CdmEntityContainer="helponeEntities">
+    <EntitySetMapping Name="adm">
+      <EntityTypeMapping TypeName="helponeModel.adm">
+        <MappingFragment StoreEntitySet="adm">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="helponeModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+          <ScalarProperty Name="u_nome" ColumnName="u_nome" />
+          <ScalarProperty Name="u_data_nasc" ColumnName="u_data_nasc" />
+          <ScalarProperty Name="u_sexo" ColumnName="u_sexo" />
+          <ScalarProperty Name="u_email" ColumnName="u_email" />
+          <ScalarProperty Name="u_cpf" ColumnName="u_cpf" />
+          <ScalarProperty Name="u_login" ColumnName="u_login" />
+          <ScalarProperty Name="u_senha" ColumnName="u_senha" />
+          <ScalarProperty Name="u_cidade" ColumnName="u_cidade" />
+          <ScalarProperty Name="u_estado" ColumnName="u_estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
