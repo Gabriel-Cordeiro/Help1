@@ -22,7 +22,7 @@ namespace HelpOneApi
             {
                 TokenEndpointPath = new PathString("/Token"),
                 Provider = new ApplicationOAuthProvider(),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
+                AccessTokenExpireTimeSpan = TimeSpan.FromHours(1),
                 AllowInsecureHttp = true
             });
         }
