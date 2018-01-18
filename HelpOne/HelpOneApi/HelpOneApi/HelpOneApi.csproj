@@ -419,6 +419,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MeController.cs" />
+    <Compile Include="Controllers\perfilController.cs" />
     <Compile Include="Controllers\usuariosController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -428,6 +429,18 @@
       <DependentUpon>HelpEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AdministratorsHelpOne.cs" />
+    <Compile Include="Models\comentarios.cs">
+      <DependentUpon>HelpEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\conexao.cs">
+      <DependentUpon>HelpEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\conversas.cs">
+      <DependentUpon>HelpEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\convite_conexao.cs">
+      <DependentUpon>HelpEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\HelpEntity.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -443,7 +456,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HelpEntity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\materias.cs">
+      <DependentUpon>HelpEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\mensagens.cs">
+      <DependentUpon>HelpEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\perfil.cs">
+      <DependentUpon>HelpEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\topico.cs">
+      <DependentUpon>HelpEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\usuario.cs">
+      <DependentUpon>HelpEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsuariosHelpOne.cs" />
+    <Compile Include="Models\usuario_dificuldades.cs">
+      <DependentUpon>HelpEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usuario_facilidades.cs">
       <DependentUpon>HelpEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

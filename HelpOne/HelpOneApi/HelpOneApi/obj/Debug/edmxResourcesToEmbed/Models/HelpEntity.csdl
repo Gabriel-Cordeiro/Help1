@@ -8,23 +8,404 @@
     <Property Name="login" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="usuario">
-    <Key>
-      <PropertyRef Name="u_id" />
-    </Key>
-    <Property Name="u_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="u_nome" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-    <Property Name="u_data_nasc" Type="DateTime" />
-    <Property Name="u_sexo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-    <Property Name="u_email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-    <Property Name="u_cpf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="u_login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="u_senha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="u_cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="u_estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityContainer Name="helponeEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="adm" EntityType="Self.adm" />
-    <EntitySet Name="usuario" EntityType="Self.usuario" />
+    <EntitySet Name="comentarios" EntityType="helponeModel.comentarios" />
+    <EntitySet Name="conexao" EntityType="helponeModel.conexao" />
+    <EntitySet Name="conversas" EntityType="helponeModel.conversas" />
+    <EntitySet Name="convite_conexao" EntityType="helponeModel.convite_conexao" />
+    <EntitySet Name="materias" EntityType="helponeModel.materias" />
+    <EntitySet Name="mensagens" EntityType="helponeModel.mensagens" />
+    <EntitySet Name="perfil" EntityType="helponeModel.perfil" />
+    <EntitySet Name="topico" EntityType="helponeModel.topico" />
+    <EntitySet Name="usuario" EntityType="helponeModel.usuario" />
+    <EntitySet Name="usuario_dificuldades" EntityType="helponeModel.usuario_dificuldades" />
+    <EntitySet Name="usuario_facilidades" EntityType="helponeModel.usuario_facilidades" />
+    <AssociationSet Name="comentarios_ibfk_1" Association="helponeModel.comentarios_ibfk_1">
+      <End Role="topico" EntitySet="topico" />
+      <End Role="comentarios" EntitySet="comentarios" />
+    </AssociationSet>
+    <AssociationSet Name="comentarios_ibfk_2" Association="helponeModel.comentarios_ibfk_2">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="comentarios" EntitySet="comentarios" />
+    </AssociationSet>
+    <AssociationSet Name="conexao_ibfk_1" Association="helponeModel.conexao_ibfk_1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="conexao" EntitySet="conexao" />
+    </AssociationSet>
+    <AssociationSet Name="conexao_ibfk_2" Association="helponeModel.conexao_ibfk_2">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="conexao" EntitySet="conexao" />
+    </AssociationSet>
+    <AssociationSet Name="conversas_ibfk_1" Association="helponeModel.conversas_ibfk_1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="conversas" EntitySet="conversas" />
+    </AssociationSet>
+    <AssociationSet Name="conversas_ibfk_2" Association="helponeModel.conversas_ibfk_2">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="conversas" EntitySet="conversas" />
+    </AssociationSet>
+    <AssociationSet Name="convite_conexao_ibfk_1" Association="helponeModel.convite_conexao_ibfk_1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="convite_conexao" EntitySet="convite_conexao" />
+    </AssociationSet>
+    <AssociationSet Name="convite_conexao_ibfk_2" Association="helponeModel.convite_conexao_ibfk_2">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="convite_conexao" EntitySet="convite_conexao" />
+    </AssociationSet>
+    <AssociationSet Name="perfil_ibfk_1" Association="helponeModel.perfil_ibfk_1">
+      <End Role="materias" EntitySet="materias" />
+      <End Role="perfil" EntitySet="perfil" />
+    </AssociationSet>
+    <AssociationSet Name="perfil_ibfk_2" Association="helponeModel.perfil_ibfk_2">
+      <End Role="materias" EntitySet="materias" />
+      <End Role="perfil" EntitySet="perfil" />
+    </AssociationSet>
+    <AssociationSet Name="usuario_dificuldades_ibfk_2" Association="helponeModel.usuario_dificuldades_ibfk_2">
+      <End Role="materias" EntitySet="materias" />
+      <End Role="usuario_dificuldades" EntitySet="usuario_dificuldades" />
+    </AssociationSet>
+    <AssociationSet Name="usuario_facilidades_ibfk_2" Association="helponeModel.usuario_facilidades_ibfk_2">
+      <End Role="materias" EntitySet="materias" />
+      <End Role="usuario_facilidades" EntitySet="usuario_facilidades" />
+    </AssociationSet>
+    <AssociationSet Name="topico_ibfk_1" Association="helponeModel.topico_ibfk_1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="topico" EntitySet="topico" />
+    </AssociationSet>
+    <AssociationSet Name="usuario_dificuldades_ibfk_1" Association="helponeModel.usuario_dificuldades_ibfk_1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="usuario_dificuldades" EntitySet="usuario_dificuldades" />
+    </AssociationSet>
+    <AssociationSet Name="usuario_facilidades_ibfk_1" Association="helponeModel.usuario_facilidades_ibfk_1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="usuario_facilidades" EntitySet="usuario_facilidades" />
+    </AssociationSet>
+    <AssociationSet Name="id_usuario" Association="helponeModel.id_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="perfil" EntitySet="perfil" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="comentarios">
+    <Key>
+      <PropertyRef Name="id_comentario" />
+    </Key>
+    <Property Name="id_comentario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_topico" Type="Int32" />
+    <Property Name="tx_comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="id_usuario" Type="Int32" />
+    <NavigationProperty Name="topico" Relationship="helponeModel.comentarios_ibfk_1" FromRole="comentarios" ToRole="topico" />
+    <NavigationProperty Name="usuario" Relationship="helponeModel.comentarios_ibfk_2" FromRole="comentarios" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="conexao">
+    <Key>
+      <PropertyRef Name="id_conexao" />
+    </Key>
+    <Property Name="id_conexao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_usuario" Type="Int32" />
+    <Property Name="id_usuario_conexao" Type="Int32" />
+    <NavigationProperty Name="usuario" Relationship="helponeModel.conexao_ibfk_1" FromRole="conexao" ToRole="usuario" />
+    <NavigationProperty Name="usuario1" Relationship="helponeModel.conexao_ibfk_2" FromRole="conexao" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="conversas">
+    <Key>
+      <PropertyRef Name="id_conversa" />
+    </Key>
+    <Property Name="id_conversa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_usuario" Type="Int32" />
+    <Property Name="id_usuario_destino" Type="Int32" />
+    <NavigationProperty Name="usuario" Relationship="helponeModel.conversas_ibfk_1" FromRole="conversas" ToRole="usuario" />
+    <NavigationProperty Name="usuario1" Relationship="helponeModel.conversas_ibfk_2" FromRole="conversas" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="convite_conexao">
+    <Key>
+      <PropertyRef Name="id_convite" />
+    </Key>
+    <Property Name="id_convite" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_usuario" Type="Int32" />
+    <Property Name="id_usuario_conexao" Type="Int32" />
+    <Property Name="fl_aceito" Type="Boolean" />
+    <NavigationProperty Name="usuario" Relationship="helponeModel.convite_conexao_ibfk_1" FromRole="convite_conexao" ToRole="usuario" />
+    <NavigationProperty Name="usuario1" Relationship="helponeModel.convite_conexao_ibfk_2" FromRole="convite_conexao" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="materias">
+    <Key>
+      <PropertyRef Name="id_materia" />
+    </Key>
+    <Property Name="id_materia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tx_nome" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="perfil" Relationship="helponeModel.perfil_ibfk_1" FromRole="materias" ToRole="perfil" />
+    <NavigationProperty Name="perfil1" Relationship="helponeModel.perfil_ibfk_2" FromRole="materias" ToRole="perfil" />
+    <NavigationProperty Name="usuario_dificuldades" Relationship="helponeModel.usuario_dificuldades_ibfk_2" FromRole="materias" ToRole="usuario_dificuldades" />
+    <NavigationProperty Name="usuario_facilidades" Relationship="helponeModel.usuario_facilidades_ibfk_2" FromRole="materias" ToRole="usuario_facilidades" />
+  </EntityType>
+  <EntityType Name="mensagens">
+    <Key>
+      <PropertyRef Name="id_mensagem" />
+    </Key>
+    <Property Name="id_mensagem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tx_mensagem" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="perfil">
+    <Key>
+      <PropertyRef Name="id_perfil" />
+    </Key>
+    <Property Name="id_perfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_materia_interesse" Type="Int32" />
+    <Property Name="id_materia_disposicao" Type="Int32" />
+    <Property Name="tx_como_conheceu" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="materias" Relationship="helponeModel.perfil_ibfk_1" FromRole="perfil" ToRole="materias" />
+    <NavigationProperty Name="materias1" Relationship="helponeModel.perfil_ibfk_2" FromRole="perfil" ToRole="materias" />
+    <Property Name="id_usuario" Type="Int32" />
+    <NavigationProperty Name="usuario" Relationship="helponeModel.id_usuario" FromRole="perfil" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="topico">
+    <Key>
+      <PropertyRef Name="id_topico" />
+    </Key>
+    <Property Name="id_topico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tx_titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="id_usuario" Type="Int32" />
+    <Property Name="tx_conteudo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="comentarios" Relationship="helponeModel.comentarios_ibfk_1" FromRole="topico" ToRole="comentarios" />
+    <NavigationProperty Name="usuario" Relationship="helponeModel.topico_ibfk_1" FromRole="topico" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tx_nome" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="data_nascimento" Type="DateTime" />
+    <Property Name="tx_sexo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="tx_email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="tx_cpf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tx_login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tx_senha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tx_cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tx_estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="comentarios" Relationship="helponeModel.comentarios_ibfk_2" FromRole="usuario" ToRole="comentarios" />
+    <NavigationProperty Name="conexao" Relationship="helponeModel.conexao_ibfk_1" FromRole="usuario" ToRole="conexao" />
+    <NavigationProperty Name="conexao1" Relationship="helponeModel.conexao_ibfk_2" FromRole="usuario" ToRole="conexao" />
+    <NavigationProperty Name="conversas" Relationship="helponeModel.conversas_ibfk_1" FromRole="usuario" ToRole="conversas" />
+    <NavigationProperty Name="conversas1" Relationship="helponeModel.conversas_ibfk_2" FromRole="usuario" ToRole="conversas" />
+    <NavigationProperty Name="convite_conexao" Relationship="helponeModel.convite_conexao_ibfk_1" FromRole="usuario" ToRole="convite_conexao" />
+    <NavigationProperty Name="convite_conexao1" Relationship="helponeModel.convite_conexao_ibfk_2" FromRole="usuario" ToRole="convite_conexao" />
+    <NavigationProperty Name="topico" Relationship="helponeModel.topico_ibfk_1" FromRole="usuario" ToRole="topico" />
+    <NavigationProperty Name="usuario_dificuldades" Relationship="helponeModel.usuario_dificuldades_ibfk_1" FromRole="usuario" ToRole="usuario_dificuldades" />
+    <NavigationProperty Name="usuario_facilidades" Relationship="helponeModel.usuario_facilidades_ibfk_1" FromRole="usuario" ToRole="usuario_facilidades" />
+    <NavigationProperty Name="perfil" Relationship="helponeModel.id_usuario" FromRole="usuario" ToRole="perfil" />
+  </EntityType>
+  <EntityType Name="usuario_dificuldades">
+    <Key>
+      <PropertyRef Name="id_usuario_dificuldade" />
+    </Key>
+    <Property Name="id_usuario_dificuldade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_usuario" Type="Int32" />
+    <Property Name="id_materia" Type="Int32" />
+    <NavigationProperty Name="materias" Relationship="helponeModel.usuario_dificuldades_ibfk_2" FromRole="usuario_dificuldades" ToRole="materias" />
+    <NavigationProperty Name="usuario" Relationship="helponeModel.usuario_dificuldades_ibfk_1" FromRole="usuario_dificuldades" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="usuario_facilidades">
+    <Key>
+      <PropertyRef Name="id_usuario_facilidade" />
+    </Key>
+    <Property Name="id_usuario_facilidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_usuario" Type="Int32" />
+    <Property Name="id_materia" Type="Int32" />
+    <NavigationProperty Name="materias" Relationship="helponeModel.usuario_facilidades_ibfk_2" FromRole="usuario_facilidades" ToRole="materias" />
+    <NavigationProperty Name="usuario" Relationship="helponeModel.usuario_facilidades_ibfk_1" FromRole="usuario_facilidades" ToRole="usuario" />
+  </EntityType>
+  <Association Name="comentarios_ibfk_1">
+    <End Type="helponeModel.topico" Role="topico" Multiplicity="0..1" />
+    <End Type="helponeModel.comentarios" Role="comentarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="topico">
+        <PropertyRef Name="id_topico" />
+      </Principal>
+      <Dependent Role="comentarios">
+        <PropertyRef Name="id_topico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="comentarios_ibfk_2">
+    <End Type="helponeModel.usuario" Role="usuario" Multiplicity="0..1" />
+    <End Type="helponeModel.comentarios" Role="comentarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="comentarios">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="conexao_ibfk_1">
+    <End Type="helponeModel.usuario" Role="usuario" Multiplicity="0..1" />
+    <End Type="helponeModel.conexao" Role="conexao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="conexao">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="conexao_ibfk_2">
+    <End Type="helponeModel.usuario" Role="usuario" Multiplicity="0..1" />
+    <End Type="helponeModel.conexao" Role="conexao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="conexao">
+        <PropertyRef Name="id_usuario_conexao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="conversas_ibfk_1">
+    <End Type="helponeModel.usuario" Role="usuario" Multiplicity="0..1" />
+    <End Type="helponeModel.conversas" Role="conversas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="conversas">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="conversas_ibfk_2">
+    <End Type="helponeModel.usuario" Role="usuario" Multiplicity="0..1" />
+    <End Type="helponeModel.conversas" Role="conversas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="conversas">
+        <PropertyRef Name="id_usuario_destino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="convite_conexao_ibfk_1">
+    <End Type="helponeModel.usuario" Role="usuario" Multiplicity="0..1" />
+    <End Type="helponeModel.convite_conexao" Role="convite_conexao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="convite_conexao">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="convite_conexao_ibfk_2">
+    <End Type="helponeModel.usuario" Role="usuario" Multiplicity="0..1" />
+    <End Type="helponeModel.convite_conexao" Role="convite_conexao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="convite_conexao">
+        <PropertyRef Name="id_usuario_conexao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="perfil_ibfk_1">
+    <End Type="helponeModel.materias" Role="materias" Multiplicity="0..1" />
+    <End Type="helponeModel.perfil" Role="perfil" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materias">
+        <PropertyRef Name="id_materia" />
+      </Principal>
+      <Dependent Role="perfil">
+        <PropertyRef Name="id_materia_interesse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="perfil_ibfk_2">
+    <End Type="helponeModel.materias" Role="materias" Multiplicity="0..1" />
+    <End Type="helponeModel.perfil" Role="perfil" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materias">
+        <PropertyRef Name="id_materia" />
+      </Principal>
+      <Dependent Role="perfil">
+        <PropertyRef Name="id_materia_disposicao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuario_dificuldades_ibfk_2">
+    <End Type="helponeModel.materias" Role="materias" Multiplicity="0..1" />
+    <End Type="helponeModel.usuario_dificuldades" Role="usuario_dificuldades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materias">
+        <PropertyRef Name="id_materia" />
+      </Principal>
+      <Dependent Role="usuario_dificuldades">
+        <PropertyRef Name="id_materia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuario_facilidades_ibfk_2">
+    <End Type="helponeModel.materias" Role="materias" Multiplicity="0..1" />
+    <End Type="helponeModel.usuario_facilidades" Role="usuario_facilidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materias">
+        <PropertyRef Name="id_materia" />
+      </Principal>
+      <Dependent Role="usuario_facilidades">
+        <PropertyRef Name="id_materia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="topico_ibfk_1">
+    <End Type="helponeModel.usuario" Role="usuario" Multiplicity="0..1" />
+    <End Type="helponeModel.topico" Role="topico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="topico">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuario_dificuldades_ibfk_1">
+    <End Type="helponeModel.usuario" Role="usuario" Multiplicity="0..1" />
+    <End Type="helponeModel.usuario_dificuldades" Role="usuario_dificuldades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="usuario_dificuldades">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuario_facilidades_ibfk_1">
+    <End Type="helponeModel.usuario" Role="usuario" Multiplicity="0..1" />
+    <End Type="helponeModel.usuario_facilidades" Role="usuario_facilidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="usuario_facilidades">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="id_usuario">
+    <End Type="helponeModel.usuario" Role="usuario" Multiplicity="0..1" />
+    <End Type="helponeModel.perfil" Role="perfil" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="perfil">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

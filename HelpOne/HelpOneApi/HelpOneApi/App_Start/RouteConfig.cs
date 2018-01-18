@@ -18,6 +18,12 @@ namespace HelpOneApi
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+          //  routes.MapRoute(
+          //    name: "Login",
+          //    url: "{controller}/{action}/{name}/{password}",
+          //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+          //);
         }
     }
 }

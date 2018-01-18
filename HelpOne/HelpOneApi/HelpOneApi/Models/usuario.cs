@@ -14,15 +14,54 @@ namespace HelpOneApi.Models
     
     public partial class usuario
     {
-        public int u_id { get; set; }
-        public string u_nome { get; set; }
-        public Nullable<System.DateTime> u_data_nasc { get; set; }
-        public string u_sexo { get; set; }
-        public string u_email { get; set; }
-        public string u_cpf { get; set; }
-        public string u_login { get; set; }
-        public string u_senha { get; set; }
-        public string u_cidade { get; set; }
-        public string u_estado { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public usuario()
+        {
+            this.comentarios = new HashSet<comentarios>();
+            this.conexao = new HashSet<conexao>();
+            this.conexao1 = new HashSet<conexao>();
+            this.conversas = new HashSet<conversas>();
+            this.conversas1 = new HashSet<conversas>();
+            this.convite_conexao = new HashSet<convite_conexao>();
+            this.convite_conexao1 = new HashSet<convite_conexao>();
+            this.topico = new HashSet<topico>();
+            this.usuario_dificuldades = new HashSet<usuario_dificuldades>();
+            this.usuario_facilidades = new HashSet<usuario_facilidades>();
+            this.perfil = new HashSet<perfil>();
+        }
+    
+        public int id_usuario { get; set; }
+        public string tx_nome { get; set; }
+        public Nullable<System.DateTime> data_nascimento { get; set; }
+        public string tx_sexo { get; set; }
+        public string tx_email { get; set; }
+        public string tx_cpf { get; set; }
+        public string tx_login { get; set; }
+        public string tx_senha { get; set; }
+        public string tx_cidade { get; set; }
+        public string tx_estado { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<comentarios> comentarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<conexao> conexao { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<conexao> conexao1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<conversas> conversas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<conversas> conversas1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<convite_conexao> convite_conexao { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<convite_conexao> convite_conexao1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<topico> topico { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<usuario_dificuldades> usuario_dificuldades { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<usuario_facilidades> usuario_facilidades { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<perfil> perfil { get; set; }
     }
 }

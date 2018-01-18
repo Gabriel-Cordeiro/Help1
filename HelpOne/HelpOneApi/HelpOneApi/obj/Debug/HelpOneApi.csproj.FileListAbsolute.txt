@@ -270,7 +270,7 @@ C:\Users\gabri\Documents\GitHub\HelpOne\HelpOneApi\HelpOneApi\bin\Microsoft.AI.D
 C:\Users\gabri\Documents\GitHub\HelpOne\HelpOneApi\HelpOneApi\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\gabri\Documents\GitHub\HelpOne\HelpOneApi\HelpOneApi\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\gabri\Documents\GitHub\HelpOne\HelpOneApi\HelpOneApi\bin\Microsoft.AI.Web.xml
-C:\Users\gabri\Documents\GitHub\HelpOne\HelpOneApi\HelpOneApi\obj\Debug\HelpOneApi.csprojResolveAssemblyReference.cache
 C:\Users\gabri\Documents\GitHub\HelpOne\HelpOneApi\HelpOneApi\obj\Debug\HelpOneApi.csproj.CoreCompileInputs.cache
 C:\Users\gabri\Documents\GitHub\HelpOne\HelpOneApi\HelpOneApi\obj\Debug\HelpOneApi.dll
 C:\Users\gabri\Documents\GitHub\HelpOne\HelpOneApi\HelpOneApi\obj\Debug\HelpOneApi.pdb
+C:\Users\gabri\Documents\GitHub\HelpOne\HelpOneApi\HelpOneApi\obj\Debug\HelpOneApi.csprojResolveAssemblyReference.cache

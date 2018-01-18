@@ -18,6 +18,7 @@ namespace HelpOneApi.Models
         public helponeEntities()
             : base("name=helponeEntities")
         {
+            Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -26,6 +27,16 @@ namespace HelpOneApi.Models
         }
     
         public virtual DbSet<adm> adm { get; set; }
+        public virtual DbSet<comentarios> comentarios { get; set; }
+        public virtual DbSet<conexao> conexao { get; set; }
+        public virtual DbSet<conversas> conversas { get; set; }
+        public virtual DbSet<convite_conexao> convite_conexao { get; set; }
+        public virtual DbSet<materias> materias { get; set; }
+        public virtual DbSet<mensagens> mensagens { get; set; }
+        public virtual DbSet<perfil> perfil { get; set; }
+        public virtual DbSet<topico> topico { get; set; }
         public virtual DbSet<usuario> usuario { get; set; }
+        public virtual DbSet<usuario_dificuldades> usuario_dificuldades { get; set; }
+        public virtual DbSet<usuario_facilidades> usuario_facilidades { get; set; }
     }
 }

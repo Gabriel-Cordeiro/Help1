@@ -12,108 +12,136 @@ using HelpOneApi.Models;
 
 namespace HelpOneApi.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class usuariosController : ApiController
     {
-        private helponeEntities db = new helponeEntities();
+
+        UsuariosHelpOne usuarioHelpOne = new UsuariosHelpOne();
 
         // GET: api/usuarios
-        public IQueryable<usuario> GetUsers()
+        public HttpResponseMessage Get()
         {
-            return db.usuario;
-        }
-
-        // GET: api/usuarios/5
-        [ResponseType(typeof(usuario))]
-        public IHttpActionResult GetUser(int id)
-        {
-            usuario usuario = db.usuario.Find(id);
-            if (usuario == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(usuario);
-        }
-
-        // PUT: api/usuarios/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult InsertUser(int id, usuario usuario)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != usuario.u_id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(usuario).State = EntityState.Modified;
-
             try
             {
-                db.SaveChanges();
+                List<usuario> allUsers = usuarioHelpOne.getAllUsers();
+                return Request.CreateResponse(HttpStatusCode.OK, allUsers);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception)
             {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return StatusCode(HttpStatusCode.NoContent);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ("Internal Server Error"));
+            }
+           
         }
 
-        // POST: api/usuarios
+        // GET: api/usuarios?login=login&password=password
         [ResponseType(typeof(usuario))]
-        public IHttpActionResult UpdateUser(usuario usuario)
+        public HttpResponseMessage Get(string login, string password)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            usuario usuario = usuarioHelpOne.getUserByLoginAndPassword(login, password);
 
-            db.usuario.Add(usuario);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = usuario.u_id }, usuario);
-        }
-
-        // DELETE: api/usuarios/5
-        [ResponseType(typeof(usuario))]
-        public IHttpActionResult DeleteUser(int id)
-        {
-            usuario usuario = db.usuario.Find(id);
             if (usuario == null)
             {
-                return NotFound();
+                return Request.CreateResponse(HttpStatusCode.NotFound,("User or login are incorrect"));              
+                //return NotFound();
             }
 
-            db.usuario.Remove(usuario);
-            db.SaveChanges();
-
-            return Ok(usuario);
+            return Request.CreateResponse(HttpStatusCode.OK, usuario);
         }
 
-        protected override void Dispose(bool disposing)
+        // GET: api/usuarios/1
+        [ResponseType(typeof(usuario))]
+        public HttpResponseMessage Get(int id)
         {
-            if (disposing)
+            usuario usuario = usuarioHelpOne.getUserById(id);
+
+            if (usuario == null)
             {
-                db.Dispose();
+                return Request.CreateResponse(HttpStatusCode.NotFound, "User does not exist");
             }
-            base.Dispose(disposing);
+
+            return Request.CreateResponse(HttpStatusCode.OK, usuario);
         }
 
-        private bool UserExists(int id)
+        //PUT: api/usuarios/5
+        [ResponseType(typeof(void))]
+        public HttpResponseMessage Put(int id, usuario usuario)
         {
-            return db.usuario.Count(e => e.u_id == id) > 0;
+            if (!ModelState.IsValid && id != usuario.id_usuario)
+            {
+                 return Request.CreateResponse(HttpStatusCode.NotAcceptable, "Model is invalid or user id is incorrect");
+            }
+
+            if (usuarioHelpOne.isAUserValid(usuario))
+            {
+
+                try
+                {
+                    usuarioHelpOne.Update(usuario);
+                    return Request.CreateResponse(HttpStatusCode.OK, "User have been updated");
+                }
+                catch (Exception)
+                {
+
+                    return Request.CreateResponse(HttpStatusCode.NotModified, "User does not have been updated, try again");
+                }
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotModified, "The object user was invalid with some values null");
+            }
+    
         }
+
+        //// POST: api/usuarios
+        //[ResponseType(typeof(usuario))]
+        //public HttpResponseMessage Post(usuario usuario)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return Request.CreateResponse(HttpStatusCode.NotAcceptable, "Model is invalid or user id is incorrect");
+        //    }
+        //    if(usuarioHelpOne.isAUserValid(usuario))
+        //    {
+
+        //    }
+        //    else
+        //    {
+
+        //    }
+
+
+        //    return CreatedAtRoute("DefaultApi", new { id = usuario.id_usuario }, usuario);
+        //}
+
+        //// DELETE: api/usuarios/5
+        //[ResponseType(typeof(usuario))]
+        //public IHttpActionResult DeleteUser(int id)
+        //{
+        //    usuario usuario = db.usuario.Find(id);
+        //    if (usuario == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    db.usuario.Remove(usuario);
+        //    db.SaveChanges();
+
+        //    return Ok(usuario);
+        //}
+
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
+
+        //private bool UserExists(int id)
+        //{
+        //    return db.usuario.Count(e => e.id_usuario == id) > 0;
+        //}
     }
 }
