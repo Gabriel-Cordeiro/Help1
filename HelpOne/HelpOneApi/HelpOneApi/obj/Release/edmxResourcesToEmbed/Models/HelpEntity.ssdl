@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="helponeModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="adm">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="varchar" MaxLength="15" />
+    <Property Name="password" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="comentarios">
+    <Key>
+      <PropertyRef Name="id_comentario" />
+    </Key>
+    <Property Name="id_comentario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_topico" Type="int" />
+    <Property Name="tx_comentario" Type="varchar" MaxLength="500" />
+    <Property Name="id_usuario" Type="int" />
+  </EntityType>
+  <EntityType Name="conexao">
+    <Key>
+      <PropertyRef Name="id_conexao" />
+    </Key>
+    <Property Name="id_conexao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="id_usuario_conexao" Type="int" />
+  </EntityType>
+  <EntityType Name="conversas">
+    <Key>
+      <PropertyRef Name="id_conversa" />
+    </Key>
+    <Property Name="id_conversa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="id_usuario_destino" Type="int" />
+  </EntityType>
+  <EntityType Name="convite_conexao">
+    <Key>
+      <PropertyRef Name="id_convite" />
+    </Key>
+    <Property Name="id_convite" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="id_usuario_conexao" Type="int" />
+    <Property Name="fl_aceito" Type="bit" />
+  </EntityType>
+  <EntityType Name="materias">
+    <Key>
+      <PropertyRef Name="id_materia" />
+    </Key>
+    <Property Name="id_materia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tx_nome" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="mensagens">
+    <Key>
+      <PropertyRef Name="id_mensagem" />
+    </Key>
+    <Property Name="id_mensagem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tx_mensagem" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="perfil">
+    <Key>
+      <PropertyRef Name="id_perfil" />
+    </Key>
+    <Property Name="id_perfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="id_materia_interesse" Type="int" />
+    <Property Name="id_materia_disposicao" Type="int" />
+    <Property Name="tx_como_conheceu" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="topico">
+    <Key>
+      <PropertyRef Name="id_topico" />
+    </Key>
+    <Property Name="id_topico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tx_titulo" Type="varchar" MaxLength="100" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="tx_conteudo" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tx_nome" Type="varchar" MaxLength="45" />
+    <Property Name="data_nascimento" Type="datetime" Precision="0" />
+    <Property Name="tx_sexo" Type="varchar" MaxLength="45" />
+    <Property Name="tx_email" Type="varchar" MaxLength="45" />
+    <Property Name="tx_cpf" Type="varchar" MaxLength="50" />
+    <Property Name="tx_login" Type="varchar" MaxLength="50" />
+    <Property Name="tx_senha" Type="varchar" MaxLength="50" />
+    <Property Name="tx_cidade" Type="varchar" MaxLength="50" />
+    <Property Name="tx_estado" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="usuario_dificuldades">
+    <Key>
+      <PropertyRef Name="id_usuario_dificuldade" />
+    </Key>
+    <Property Name="id_usuario_dificuldade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="id_materia" Type="int" />
+  </EntityType>
+  <EntityType Name="usuario_facilidades">
+    <Key>
+      <PropertyRef Name="id_usuario_facilidade" />
+    </Key>
+    <Property Name="id_usuario_facilidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="id_materia" Type="int" />
+  </EntityType>
+  <Association Name="comentarios_ibfk_1">
+    <End Role="topico" Type="Self.topico" Multiplicity="0..1" />
+    <End Role="comentarios" Type="Self.comentarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="topico">
+        <PropertyRef Name="id_topico" />
+      </Principal>
+      <Dependent Role="comentarios">
+        <PropertyRef Name="id_topico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="comentarios_ibfk_2">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="comentarios" Type="Self.comentarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="comentarios">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="conexao_ibfk_1">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="conexao" Type="Self.conexao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="conexao">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="conexao_ibfk_2">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="conexao" Type="Self.conexao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="conexao">
+        <PropertyRef Name="id_usuario_conexao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="conversas_ibfk_1">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="conversas" Type="Self.conversas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="conversas">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="conversas_ibfk_2">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="conversas" Type="Self.conversas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="conversas">
+        <PropertyRef Name="id_usuario_destino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="convite_conexao_ibfk_1">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="convite_conexao" Type="Self.convite_conexao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="convite_conexao">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="convite_conexao_ibfk_2">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="convite_conexao" Type="Self.convite_conexao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="convite_conexao">
+        <PropertyRef Name="id_usuario_conexao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="id_usuario">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="perfil" Type="Self.perfil" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="perfil">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="perfil_ibfk_1">
+    <End Role="materias" Type="Self.materias" Multiplicity="0..1" />
+    <End Role="perfil" Type="Self.perfil" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materias">
+        <PropertyRef Name="id_materia" />
+      </Principal>
+      <Dependent Role="perfil">
+        <PropertyRef Name="id_materia_interesse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="perfil_ibfk_2">
+    <End Role="materias" Type="Self.materias" Multiplicity="0..1" />
+    <End Role="perfil" Type="Self.perfil" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materias">
+        <PropertyRef Name="id_materia" />
+      </Principal>
+      <Dependent Role="perfil">
+        <PropertyRef Name="id_materia_disposicao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="topico_ibfk_1">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="topico" Type="Self.topico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="topico">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuario_dificuldades_ibfk_1">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="usuario_dificuldades" Type="Self.usuario_dificuldades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="usuario_dificuldades">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuario_dificuldades_ibfk_2">
+    <End Role="materias" Type="Self.materias" Multiplicity="0..1" />
+    <End Role="usuario_dificuldades" Type="Self.usuario_dificuldades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materias">
+        <PropertyRef Name="id_materia" />
+      </Principal>
+      <Dependent Role="usuario_dificuldades">
+        <PropertyRef Name="id_materia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuario_facilidades_ibfk_1">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="usuario_facilidades" Type="Self.usuario_facilidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="usuario_facilidades">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuario_facilidades_ibfk_2">
+    <End Role="materias" Type="Self.materias" Multiplicity="0..1" />
+    <End Role="usuario_facilidades" Type="Self.usuario_facilidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materias">
+        <PropertyRef Name="id_materia" />
+      </Principal>
+      <Dependent Role="usuario_facilidades">
+        <PropertyRef Name="id_materia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="helponeModelStoreContainer">
+    <EntitySet Name="adm" EntityType="Self.adm" Schema="helpone" store:Type="Tables" />
+    <EntitySet Name="comentarios" EntityType="Self.comentarios" Schema="helpone" store:Type="Tables" />
+    <EntitySet Name="conexao" EntityType="Self.conexao" Schema="helpone" store:Type="Tables" />
+    <EntitySet Name="conversas" EntityType="Self.conversas" Schema="helpone" store:Type="Tables" />
+    <EntitySet Name="convite_conexao" EntityType="Self.convite_conexao" Schema="helpone" store:Type="Tables" />
+    <EntitySet Name="materias" EntityType="Self.materias" Schema="helpone" store:Type="Tables" />
+    <EntitySet Name="mensagens" EntityType="Self.mensagens" Schema="helpone" store:Type="Tables" />
+    <EntitySet Name="perfil" EntityType="Self.perfil" Schema="helpone" store:Type="Tables" />
+    <EntitySet Name="topico" EntityType="Self.topico" Schema="helpone" store:Type="Tables" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" Schema="helpone" store:Type="Tables" />
+    <EntitySet Name="usuario_dificuldades" EntityType="Self.usuario_dificuldades" Schema="helpone" store:Type="Tables" />
+    <EntitySet Name="usuario_facilidades" EntityType="Self.usuario_facilidades" Schema="helpone" store:Type="Tables" />
+    <AssociationSet Name="comentarios_ibfk_1" Association="Self.comentarios_ibfk_1">
+      <End Role="topico" EntitySet="topico" />
+      <End Role="comentarios" EntitySet="comentarios" />
+    </AssociationSet>
+    <AssociationSet Name="comentarios_ibfk_2" Association="Self.comentarios_ibfk_2">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="comentarios" EntitySet="comentarios" />
+    </AssociationSet>
+    <AssociationSet Name="conexao_ibfk_1" Association="Self.conexao_ibfk_1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="conexao" EntitySet="conexao" />
+    </AssociationSet>
+    <AssociationSet Name="conexao_ibfk_2" Association="Self.conexao_ibfk_2">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="conexao" EntitySet="conexao" />
+    </AssociationSet>
+    <AssociationSet Name="conversas_ibfk_1" Association="Self.conversas_ibfk_1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="conversas" EntitySet="conversas" />
+    </AssociationSet>
+    <AssociationSet Name="conversas_ibfk_2" Association="Self.conversas_ibfk_2">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="conversas" EntitySet="conversas" />
+    </AssociationSet>
+    <AssociationSet Name="convite_conexao_ibfk_1" Association="Self.convite_conexao_ibfk_1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="convite_conexao" EntitySet="convite_conexao" />
+    </AssociationSet>
+    <AssociationSet Name="convite_conexao_ibfk_2" Association="Self.convite_conexao_ibfk_2">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="convite_conexao" EntitySet="convite_conexao" />
+    </AssociationSet>
+    <AssociationSet Name="id_usuario" Association="Self.id_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="perfil" EntitySet="perfil" />
+    </AssociationSet>
+    <AssociationSet Name="perfil_ibfk_1" Association="Self.perfil_ibfk_1">
+      <End Role="materias" EntitySet="materias" />
+      <End Role="perfil" EntitySet="perfil" />
+    </AssociationSet>
+    <AssociationSet Name="perfil_ibfk_2" Association="Self.perfil_ibfk_2">
+      <End Role="materias" EntitySet="materias" />
+      <End Role="perfil" EntitySet="perfil" />
+    </AssociationSet>
+    <AssociationSet Name="topico_ibfk_1" Association="Self.topico_ibfk_1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="topico" EntitySet="topico" />
+    </AssociationSet>
+    <AssociationSet Name="usuario_dificuldades_ibfk_1" Association="Self.usuario_dificuldades_ibfk_1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="usuario_dificuldades" EntitySet="usuario_dificuldades" />
+    </AssociationSet>
+    <AssociationSet Name="usuario_dificuldades_ibfk_2" Association="Self.usuario_dificuldades_ibfk_2">
+      <End Role="materias" EntitySet="materias" />
+      <End Role="usuario_dificuldades" EntitySet="usuario_dificuldades" />
+    </AssociationSet>
+    <AssociationSet Name="usuario_facilidades_ibfk_1" Association="Self.usuario_facilidades_ibfk_1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="usuario_facilidades" EntitySet="usuario_facilidades" />
+    </AssociationSet>
+    <AssociationSet Name="usuario_facilidades_ibfk_2" Association="Self.usuario_facilidades_ibfk_2">
+      <End Role="materias" EntitySet="materias" />
+      <End Role="usuario_facilidades" EntitySet="usuario_facilidades" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

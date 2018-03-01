@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="helponeModelStoreContainer" CdmEntityContainer="helponeEntities">
+    <EntitySetMapping Name="adm">
+      <EntityTypeMapping TypeName="helponeModel.adm">
+        <MappingFragment StoreEntitySet="adm">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comentarios">
+      <EntityTypeMapping TypeName="helponeModel.comentarios">
+        <MappingFragment StoreEntitySet="comentarios">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="tx_comentario" ColumnName="tx_comentario" />
+          <ScalarProperty Name="id_topico" ColumnName="id_topico" />
+          <ScalarProperty Name="id_comentario" ColumnName="id_comentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="conexao">
+      <EntityTypeMapping TypeName="helponeModel.conexao">
+        <MappingFragment StoreEntitySet="conexao">
+          <ScalarProperty Name="id_usuario_conexao" ColumnName="id_usuario_conexao" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_conexao" ColumnName="id_conexao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="conversas">
+      <EntityTypeMapping TypeName="helponeModel.conversas">
+        <MappingFragment StoreEntitySet="conversas">
+          <ScalarProperty Name="id_usuario_destino" ColumnName="id_usuario_destino" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_conversa" ColumnName="id_conversa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="convite_conexao">
+      <EntityTypeMapping TypeName="helponeModel.convite_conexao">
+        <MappingFragment StoreEntitySet="convite_conexao">
+          <ScalarProperty Name="fl_aceito" ColumnName="fl_aceito" />
+          <ScalarProperty Name="id_usuario_conexao" ColumnName="id_usuario_conexao" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_convite" ColumnName="id_convite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="materias">
+      <EntityTypeMapping TypeName="helponeModel.materias">
+        <MappingFragment StoreEntitySet="materias">
+          <ScalarProperty Name="tx_nome" ColumnName="tx_nome" />
+          <ScalarProperty Name="id_materia" ColumnName="id_materia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mensagens">
+      <EntityTypeMapping TypeName="helponeModel.mensagens">
+        <MappingFragment StoreEntitySet="mensagens">
+          <ScalarProperty Name="tx_mensagem" ColumnName="tx_mensagem" />
+          <ScalarProperty Name="id_mensagem" ColumnName="id_mensagem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="perfil">
+      <EntityTypeMapping TypeName="helponeModel.perfil">
+        <MappingFragment StoreEntitySet="perfil">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="tx_como_conheceu" ColumnName="tx_como_conheceu" />
+          <ScalarProperty Name="id_materia_disposicao" ColumnName="id_materia_disposicao" />
+          <ScalarProperty Name="id_materia_interesse" ColumnName="id_materia_interesse" />
+          <ScalarProperty Name="id_perfil" ColumnName="id_perfil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="topico">
+      <EntityTypeMapping TypeName="helponeModel.topico">
+        <MappingFragment StoreEntitySet="topico">
+          <ScalarProperty Name="tx_conteudo" ColumnName="tx_conteudo" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="tx_titulo" ColumnName="tx_titulo" />
+          <ScalarProperty Name="id_topico" ColumnName="id_topico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="helponeModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="tx_estado" ColumnName="tx_estado" />
+          <ScalarProperty Name="tx_cidade" ColumnName="tx_cidade" />
+          <ScalarProperty Name="tx_senha" ColumnName="tx_senha" />
+          <ScalarProperty Name="tx_login" ColumnName="tx_login" />
+          <ScalarProperty Name="tx_cpf" ColumnName="tx_cpf" />
+          <ScalarProperty Name="tx_email" ColumnName="tx_email" />
+          <ScalarProperty Name="tx_sexo" ColumnName="tx_sexo" />
+          <ScalarProperty Name="data_nascimento" ColumnName="data_nascimento" />
+          <ScalarProperty Name="tx_nome" ColumnName="tx_nome" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario_dificuldades">
+      <EntityTypeMapping TypeName="helponeModel.usuario_dificuldades">
+        <MappingFragment StoreEntitySet="usuario_dificuldades">
+          <ScalarProperty Name="id_materia" ColumnName="id_materia" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_usuario_dificuldade" ColumnName="id_usuario_dificuldade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario_facilidades">
+      <EntityTypeMapping TypeName="helponeModel.usuario_facilidades">
+        <MappingFragment StoreEntitySet="usuario_facilidades">
+          <ScalarProperty Name="id_materia" ColumnName="id_materia" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_usuario_facilidade" ColumnName="id_usuario_facilidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,1 @@
+"# portal_de_noticias_nodejs"  git init git add README.md git commit -m "first commit" git remote add origin https://github.com/Gabriel-Cordeiro/portal_de_noticias_nodejs.git git push -u origin master

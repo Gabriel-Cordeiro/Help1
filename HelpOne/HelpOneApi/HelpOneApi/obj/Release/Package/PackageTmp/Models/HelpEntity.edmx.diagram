@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c9ef28afc52f433aae993b76d2a4b049" Name="Diagram1">
+        <EntityTypeShape EntityType="helponeModel.adm" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="helponeModel.comentarios" Width="1.5" PointX="5.5" PointY="8.5" />
+        <EntityTypeShape EntityType="helponeModel.conexao" Width="1.5" PointX="8.875" PointY="3.375" />
+        <EntityTypeShape EntityType="helponeModel.conversas" Width="1.5" PointX="6.875" PointY="4.5" />
+        <EntityTypeShape EntityType="helponeModel.convite_conexao" Width="1.5" PointX="5.625" PointY="22.75" />
+        <EntityTypeShape EntityType="helponeModel.materias" Width="1.5" PointX="5.625" PointY="0.875" />
+        <EntityTypeShape EntityType="helponeModel.mensagens" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="helponeModel.perfil" Width="1.5" PointX="8" PointY="0.75" />
+        <EntityTypeShape EntityType="helponeModel.topico" Width="1.5" PointX="3.125" PointY="8.375" />
+        <EntityTypeShape EntityType="helponeModel.usuario" Width="1.5" PointX="0.75" PointY="3.125" />
+        <EntityTypeShape EntityType="helponeModel.usuario_dificuldades" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="helponeModel.usuario_facilidades" Width="1.5" PointX="3" PointY="3.25" />
+        <AssociationConnector Association="helponeModel.comentarios_ibfk_1" />
+        <AssociationConnector Association="helponeModel.comentarios_ibfk_2" />
+        <AssociationConnector Association="helponeModel.conexao_ibfk_1" />
+        <AssociationConnector Association="helponeModel.conexao_ibfk_2" />
+        <AssociationConnector Association="helponeModel.conversas_ibfk_1" />
+        <AssociationConnector Association="helponeModel.conversas_ibfk_2" />
+        <AssociationConnector Association="helponeModel.convite_conexao_ibfk_1" />
+        <AssociationConnector Association="helponeModel.convite_conexao_ibfk_2" />
+        <AssociationConnector Association="helponeModel.perfil_ibfk_1" />
+        <AssociationConnector Association="helponeModel.perfil_ibfk_2" />
+        <AssociationConnector Association="helponeModel.usuario_dificuldades_ibfk_2" />
+        <AssociationConnector Association="helponeModel.usuario_facilidades_ibfk_2" />
+        <AssociationConnector Association="helponeModel.topico_ibfk_1" />
+        <AssociationConnector Association="helponeModel.usuario_dificuldades_ibfk_1" />
+        <AssociationConnector Association="helponeModel.usuario_facilidades_ibfk_1" />
+        <AssociationConnector Association="helponeModel.id_usuario" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
