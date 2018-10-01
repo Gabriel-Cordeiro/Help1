@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c9ef28afc52f433aae993b76d2a4b049" Name="Diagram1">
+      <Diagram DiagramId="c9ef28afc52f433aae993b76d2a4b049" Name="Diagram1" ZoomLevel="81">
         <EntityTypeShape EntityType="helponeModel.adm" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="helponeModel.comentarios" Width="1.5" PointX="5.5" PointY="8.5" />
         <EntityTypeShape EntityType="helponeModel.conexao" Width="1.5" PointX="8.875" PointY="3.375" />
         <EntityTypeShape EntityType="helponeModel.conversas" Width="1.5" PointX="6.875" PointY="4.5" />
-        <EntityTypeShape EntityType="helponeModel.convite_conexao" Width="1.5" PointX="5.625" PointY="22.75" />
+        <EntityTypeShape EntityType="helponeModel.convite_conexao" Width="1.5" PointX="8.75" PointY="8.875" />
         <EntityTypeShape EntityType="helponeModel.materias" Width="1.5" PointX="5.625" PointY="0.875" />
         <EntityTypeShape EntityType="helponeModel.mensagens" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="helponeModel.perfil" Width="1.5" PointX="8" PointY="0.75" />

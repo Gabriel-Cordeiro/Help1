@@ -18,7 +18,6 @@ namespace HelpOneApi.Models
         public helponeEntities()
             : base("name=helponeEntities")
         {
-            Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

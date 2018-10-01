@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\gabri\Documents\GitHub\HelpOne\HelpOneApi\HelpOneApi\Models\HelpEntity.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\gabriel.cordeiro\Documents\GitHub\Help1\HelpOne\HelpOneApi\HelpOneApi\Models\HelpEntity.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
